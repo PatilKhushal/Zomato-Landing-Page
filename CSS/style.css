@@ -1,5 +1,6 @@
 :root
 {
+    --bodyMinHeight : 1560px;
     --headerPadding: 0 3rem;
     --buttonFontSize: 1rem;
     --headerButtonPadding: 1rem 2rem;
@@ -9,10 +10,16 @@
     --secionLeftFontSize : 3rem;
     --sectionRightWidth: 50%;
     --sectionContainerPadding : 0 1rem;
+    --mainMargin : 0 0 8rem 0;
     --mainContainerWidth : 70%;
-    --mainContainerPadding : 2.5rem 0;
+    --mainContainerPadding : 2.5rem 0 0 0;
     --mainContainerGap : 2rem;
-}
+    --itemWidth : 30%;
+    --itemMinHeight : 450px;
+    --itemInfoWidth : 100%;
+    --itemInfoPadding : 1rem;
+    --mainContainerButtonPadding : 1rem 30rem;
+}   
 
 *
 {
@@ -25,7 +32,7 @@ body
     background-color: #EBF2FF;
     margin: 0;
     color: #1D3557;
-    min-width: 1543px;
+    min-width: var(--bodyMinHeight);
 }
 
 
@@ -35,6 +42,7 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 2px solid red; */
 }
 
 button
@@ -105,7 +113,7 @@ section .container
 
 
 /* section container left*/
-section .container .left
+.container .left
 {
     flex-direction: column;
     align-items: flex-start;
@@ -154,14 +162,20 @@ section .container .right::before
     z-index: -1;
 }
 
-/* main container*/
+/* main */
+main
+{
+    flex-direction: column;
+    margin: var(--mainMargin);
+}
 
+/* main container*/
 main .container
 {
     width: var(--mainContainerWidth);
     flex-direction: column;
     position: relative;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: var(--mainContainerPadding);
     gap: var(--mainContainerGap);
 }
@@ -180,25 +194,62 @@ main .container::after
 
 main .container h1
 {
-    font-size: 3rem;
-    /* width: 100%; */
+    font-size: var(--secionLeftFontSize);
     text-align: center;
 }
 
-.item-grp
+main .container button
 {
-    justify-content: space-evenly;
+    position: relative;
+    top: 4rem;
+    background-image: none;
+    background-color: transparent;
+    padding: var(--mainContainerButtonPadding);
+    transition: all .3s ;
+    cursor: pointer;
 }
 
+main .container button:hover
+{
+    padding: 1rem 10rem;
+    color: #dd2476;
+    background-color: #EBF2FF;
+}
+
+/* item grp */
+.item-grp
+{
+    gap: 3rem;
+}
+.item-grp, .threegrp
+{
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item-grp div:nth-child(odd)
+{
+    position: relative;
+    top: 20px;
+}
+
+.item-grp div:nth-child(2)
+{
+    position: relative;
+}
+
+
+/* item */
 .item
 {
     flex-direction: column;
-    width: 30%;
+    width: var(--itemWidth);
     background-color: #EBF2FF;
-    border-radius: 6px;
+    border-radius: 0.4rem;
+    min-height: var(--itemMinHeight);
     overflow: hidden;
-    min-height: 450px;
     justify-content: flex-start;
+
 }
 
 .item img
@@ -210,17 +261,49 @@ main .container h1
 {
     align-items: flex-start;
     flex-direction: column;
+    width: var(--itemInfoWidth);
+    padding: var(--itemInfoPadding);
+}
+
+main+main .container
+{
+    flex-direction: row;
+}
+
+main+main .container::after
+{
+    background-image: none;
+}
+
+.img-grp-container
+{
+    width: calc(var(--sectionRightWidth) + 4%);
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.child
+{
     width: 100%;
-    padding: 20px;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    gap: .5rem;
 }
 
-main .item-grp div:nth-child(odd)
+.child:nth-child(odd) > div:nth-child(even), .child:nth-child(odd) > div:nth-child(even) > img, .child:nth-child(even) > div:nth-child(odd), .child:nth-child(even) > div:nth-child(odd) > img
 {
-    position: relative;
-    top: 20px;
+    min-width: 300px;
+    min-height: 260px;
 }
 
-main .item-grp div:nth-child(2)
+.img-grp-container .child:nth-child(even)
 {
-    position: relative;
+    align-items: flex-start;
+}
+
+.img-grp img
+{
+    width: 100%;
+    border-radius: 5px;
 }

@@ -1,27 +1,31 @@
 :root {
-  --bodyMinHeight: 97.5rem;
   --headerPadding: 0 3rem;
   --buttonFontSize: 1rem;
   --headerButtonPadding: 1rem 2rem;
   --headerButtonMargin: 10px;
-  --section1Padding: 1rem 14rem 0 14rem;
+  --section1Width: 1200px;
   --section1LeftWidth: 50%;
   --secionLeftFontSize: 3rem;
   --section1RightWidth: 50%;
   --section1ContainerPadding: 0 1rem;
-  --section2Margin: 0 0 8rem 0;
-  --section2ContainerWidth: 70rem;
+  --section1ContainerMargin: 0 2rem;
+  --section2Margin: 0 0 3rem 0;
+  --section2ContainerWidth: 90%;
   --section2ContainerPadding: 2.5rem 0 0 0;
   --section2ContainerGap: 2%;
-  --section2ContainerButtonPadding: 1rem 30rem;
+  --section2ContainerButtonPadding: 1rem;
   --itemWidth: 30%;
   --itemMinHeight: 30rem;
   --itemInfoWidth: 100%;
   --itemInfoPadding: 1rem;
+  --imgGrpWidth: 54%;
+  --childEvenMaxHeight: 300px;
+  --childEvenMaxWidth: 55%;
+  --childOddMaxHeight: 260px;
+  --childOddMaxWidth: 45%;
   --section3Margin: 2rem 0 0 0;
   --emailPadding: 0.3rem 1rem;
   --bgPadding: 8rem 10rem;
-  /* --bgWidth: 90%; */
 }
 
 * {
@@ -40,6 +44,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 2px solid red ; */
 }
 
 button {
@@ -73,7 +78,6 @@ h1,
 h2,
 p {
   margin: 0;
-  text-align: center;
 }
 
 p > span {
@@ -95,15 +99,16 @@ header img {
 
 /* section1 */
 .section1 {
-    padding: var(--section1Padding);
-    width: 100%;
+  margin: auto;
+  border-color: green;
+  width: var(--section1Width);
 }
 
 /* section1 Container */
 .section1 .container {
-  padding: var(--section1ContainerPadding);
   position: relative;
-  gap: var(--section2ContainerGap);
+  border-color: black;
+  margin: var(--section1ContainerMargin);
 }
 
 /* section1 container left*/
@@ -184,7 +189,6 @@ header img {
 
 .section2 .container h1 {
   font-size: var(--secionLeftFontSize);
-  text-align: center;
 }
 
 .section2.flex .container > button {
@@ -240,7 +244,7 @@ header img {
   width: var(--itemWidth);
   background-color: #ebf2ff;
   border-radius: 0.4rem;
-  min-height: var(--itemMinHeight);
+  height: var(--itemMinHeight);
   overflow: hidden;
   justify-content: flex-start;
 }
@@ -254,13 +258,15 @@ header img {
   flex-direction: column;
   width: var(--itemInfoWidth);
   padding: var(--itemInfoPadding);
+  text-align: left;
 }
 
+/* img-grp-container */
 .img-grp-container {
-  width: calc(var(--section1RightWidth) + 4%);
-  flex-wrap: wrap;
+  width: var(--imgGrpWidth);
   align-items: baseline;
   justify-content: space-evenly;
+  flex-direction: column;
 }
 
 .child {
@@ -270,16 +276,31 @@ header img {
   gap: 0.5rem;
 }
 
-.child:nth-child(odd) > div:nth-child(even),
-.child:nth-child(odd) > div:nth-child(even) > img,
-.child:nth-child(even) > div:nth-child(odd),
-.child:nth-child(even) > div:nth-child(odd) > img {
-  min-width: 300px;
-  min-height: 260px;
+/* .child > div:nth-child(even),
+.child > div:nth-child(even) > img{
+  max-width: 300px;
+  max-height: 260px;
+} */
+
+.child > div:nth-child(even) {
+  width: var(--childEvenMaxWidth);
+}
+
+.child > div:nth-child(even) > img {
+  max-height: var(--childEvenMaxHeight);
+}
+
+.child > div:nth-child(odd) {
+  max-width: var(--childOddMaxWidth);
+}
+
+.child > div:nth-child(odd) > img {
+  max-height: var(--childOddMaxHeight);
 }
 
 .img-grp-container .child:nth-child(even) {
   align-items: flex-start;
+  flex-direction: row-reverse;
 }
 
 .img-grp img {
@@ -293,9 +314,6 @@ header img {
 }
 
 /* section4 */
-.section4 h1 {
-  width: 100%;
-}
 
 input[type="email"] {
   width: 50%;
@@ -328,30 +346,155 @@ input[type="email"] {
   z-index: -1;
 }
 
-
 /* footer */
-footer.flex
-{
-    position: relative;
-    background: linear-gradient(to right, #ff512f 0%, #dd2476 51%, #ff512f 100%);
-    justify-content: space-around;
+footer.flex {
+  position: relative;
+  background: linear-gradient(to right, #ff512f 0%, #dd2476 51%, #ff512f 100%);
+  justify-content: space-evenly;
 }
 
-footer img
-{
-    filter: brightness(0) invert(1);
+footer img {
+  width: 300px;
+  filter: brightness(0) invert(1);
 }
 
-ul.flex
-{
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
+ul.flex {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 0.5rem;
 }
 
-li
+li {
+  list-style: none;
+  color: white;
+  font-weight: bold;
+}
+
+@media (min-width: 600px) and (max-width: 1199px) {
+  :root {
+    --buttonFontSize: 0.8rem;
+    --headerButtonPadding: 0.5rem 1rem;
+    --section1ContainerPadding: 0;
+    --section1LeftWidth: fit-content;
+    --section1RightWidth: 100%;
+    --secionLeftFontSize: 1.5rem;
+    --headerPadding: 0;
+    --section2ContainerWidth: 95%;
+    --section2ContainerPadding: 3rem 0 0 0;
+    --bgPadding: 6rem 0;
+    --itemMinHeight: 20rem;
+    --imgGrpWidth: 70%;
+    --childEvenMaxWidth: 65%;
+    --childOddMaxWidth: 35%;
+    --childEvenMaxHeight: 180px;
+  }
+
+  .section1 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section1 .container {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .bg-quote h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 0 1rem;
+  }
+
+  .bg-quote {
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 599px) 
 {
-    list-style: none;
-    color: white;
-    font-weight: bold;
+    :root {
+        --buttonFontSize: 0.6rem;
+        --headerButtonPadding: 0.5rem 1rem;
+        --section1ContainerPadding: 0 0.2rem;
+        --section1RightWidth: 100%;
+        --secionLeftFontSize: 0.8rem;
+        --headerPadding: 0;
+        --section1ContainerMargin: 0;
+
+
+
+
+
+        --section2ContainerWidth: 95%;
+        --section2ContainerPadding: 3rem 0 0 0;
+        --bgPadding: 6rem 0;
+        --itemMinHeight: 20rem;
+        --imgGrpWidth: 70%;
+        --childEvenMaxWidth: 65%;
+        --childOddMaxWidth: 35%;
+        --childEvenMaxHeight: 180px;
+
+
+
+        --headerButtonMargin: 10px;
+        --section1Width: 1200px;
+        --section1LeftWidth: 50%;
+        
+
+        
+        
+
+        /* --section1ContainerMargin: 0 2rem;
+        --section2Margin: 0 0 3rem 0;
+        --section2ContainerGap: 2%;
+        --section2ContainerButtonPadding: 1rem;
+        --itemWidth: 30%;
+        --itemInfoWidth: 100%;
+        --itemInfoPadding: 1rem;
+        --section3Margin: 2rem 0 0 0;
+        --emailPadding: 0.3rem 1rem; */
+        
+      }
+    
+      .section1 {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .section1 .container {
+        justify-content: space-between;
+        flex-direction: column-reverse;
+        padding: var(--section1ContainerPadding);
+      }
+    
+      .container .left
+      {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .section1 .container .left .buttonPrimary
+      {
+        width: 50%;
+      }
+      
+      .bg-quote h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        line-height: 1.2;
+        font-weight: 500;
+        margin: 0 1rem;
+      }
+    
+      .bg-quote {
+        border-radius: 15px;
+      }
+
+      
 }

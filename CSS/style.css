@@ -244,7 +244,6 @@ header img {
   width: var(--itemWidth);
   background-color: #ebf2ff;
   border-radius: 0.4rem;
-  height: var(--itemMinHeight);
   overflow: hidden;
   justify-content: flex-start;
 }
@@ -335,6 +334,10 @@ input[type="email"] {
   background-color: #0a416580;
   flex-wrap: wrap;
 }
+
+.bg-quote h2 {
+    text-align: center;
+  }
 
 .bg-quote::after {
   content: "";
@@ -500,6 +503,7 @@ li {
   .item {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     height: var(--itemMinHeight);
+    margin: 0 0 1rem 0;
   }
 
   .section2.flex .container > button {
@@ -544,4 +548,14 @@ li {
     font-size: 1.5rem;
     margin: 0 0 1rem 0;
   }
+
+  .section4 .top.input {
+    width: 100%;
+    text-align: left;
+
+  }
+
+  input[type="email"] {
+    width: fit-content;
+}
 }

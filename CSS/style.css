@@ -221,7 +221,7 @@ header img {
 
 /* item grp */
 .item-grp {
-  gap: 3rem;
+  /* gap: 3rem; */
 }
 .item-grp,
 .threegrp {
@@ -229,12 +229,12 @@ header img {
   flex-wrap: wrap;
 }
 
-.item-grp div:nth-child(odd) {
+.item-grp .threegrp .item:nth-child(odd) {
   position: relative;
   top: 20px;
 }
 
-.item-grp div:nth-child(2) {
+.item-grp .threegrp .item:nth-child(2) {
   position: relative;
 }
 
@@ -246,10 +246,18 @@ header img {
   border-radius: 0.4rem;
   overflow: hidden;
   justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.overflow
+{
+    width: 100%;
+    overflow: hidden;
 }
 
 .item img {
   width: 100%;
+  height: 100%;
 }
 
 .item .info {
@@ -273,13 +281,9 @@ header img {
   align-items: flex-end;
   justify-content: space-evenly;
   gap: 0.5rem;
+  margin: 0.2rem;
+  overflow: hidden;
 }
-
-/* .child > div:nth-child(even),
-.child > div:nth-child(even) > img{
-  max-width: 300px;
-  max-height: 260px;
-} */
 
 .child > div:nth-child(even) {
   width: var(--childEvenMaxWidth);
@@ -295,6 +299,11 @@ header img {
 
 .child > div:nth-child(odd) > img {
   max-height: var(--childOddMaxHeight);
+}
+
+.img-grp
+{
+    overflow: hidden;
 }
 
 .img-grp-container .child:nth-child(even) {
@@ -372,6 +381,17 @@ li {
   list-style: none;
   color: white;
   font-weight: bold;
+}
+
+img
+{
+    transition: all 1s;
+}
+
+img:hover:not(.section1 img)
+{
+    transform: scale(1.2);
+
 }
 
 @media (min-width: 600px) and (max-width: 1199px) {
